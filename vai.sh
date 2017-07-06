@@ -2,7 +2,7 @@
 #script para caputar dos dados de Stats do Bind e criar o arquivo para o PRTG.
 #criado por Osni Silva.
 
-#faz download do arquivo named.log do meu servidor bind.
+#faz download do arquivo named.log do meu servidor bind. lembrado que a porta ssh do meu servidor é 2222 por isto -p 2222
 lftp -e "mirror /var/log/named /var/www/html;quit" -p 2222 -u login,senha sftp://ipdoservidordedns-bind
 
 #limpa o arquivo /var/www/html/prtg.txt
