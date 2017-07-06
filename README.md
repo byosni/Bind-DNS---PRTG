@@ -80,13 +80,14 @@ editar a porta do apache para 8080, ou como preferir, mudar a linha Listen 80 pa
 
         root@debian:/# nano /var/www/html/vai.sh
 
-    colocar o script: 
+colocar o script: 
+
     #!/bin/bash
     #script para caputar dos dados de Stats do Bind e criar o arquivo para o PRTG.
     #criado por Osni Silva.
 
     #faz download do arquivo named.log do meu servidor bind.
-    lftp -e "mirror /var/log/named /var/www/html;quit" -p 2222 -u root,#BTX530S2! sftp://192.168.254.3
+    lftp -e "mirror /var/log/named /var/www/html;quit" -p 2222 -u login,senha sftp://ipdoservidordedns-bind
 
     #limpa o arquivo /var/www/html/prtg.txt
     rm -rf /var/www/html/prtg3.txt
@@ -102,3 +103,9 @@ editar a porta do apache para 8080, ou como preferir, mudar a linha Listen 80 pa
     echo ; grep "Cache DB" /var/www/html/named.log -A 16 | grep "TXT" | awk '{print "[" $1 "]" }' | sed -n '1p' >> /var/www/html/prtg3.txt
     echo ; grep "Cache DB" /var/www/html/named.log -A 16 | grep "AAAA" | awk '{print "[" $1 "]" }' | sed -n '1p' >> /var/www/html/prtg3.txt
     echo ; grep "Cache DB" /var/www/html/named.log -A 16 | grep "SRV" | awk '{print "[" $1 "]" }' | sed -n '1p' >> /var/www/html/prtg3.txt
+
+Dar permisão 
+
+    root@debian:/# chmod +x /var/www/html/vai.sh
+
+6. Programar para rodar o script: 
