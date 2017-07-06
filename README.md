@@ -1,5 +1,5 @@
 # Bind-DNS-PRTG
-Captura variáveis do arquivo de stats do bind e gera arquivo de configuração para ser capturado e gerado gráfico para o PRTG.
+Captura variáveis do arquivo de stats do bind e cria um arquivo de configuração para o e gerar gráfico para o PRTG.
 
 1. Editar o arquivo no servidor de DNS:
     
