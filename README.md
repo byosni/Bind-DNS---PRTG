@@ -16,6 +16,7 @@ incluir:
 
 verificar se o arquivo ficou assim: 
 
+    root@dns:/var/log/named# less named.log
     +++ Statistics Dump +++ (1499366581)
     ++ Incoming Requests ++
                 40386068 QUERY
@@ -52,7 +53,7 @@ verificar se o arquivo ficou assim:
              1019773 DS
                36176 DNSKEY
                  341 ANY
-3. programar o crontab para apagar e gerar o arquivo de estatisticas a cada 5min. 
+3. Programar o crontab para apagar e gerar o arquivo de estatisticas a cada 5min. 
         
         root@dns:/# crontab -e
 
@@ -61,7 +62,7 @@ colocar o comando abaixo.
         */5 * * * * rm -rf /var/log/named/named.log && /usr/sbin/rndc stats
 
 4. Instalar um servidor Debian para capturar os dados do bind. Não usar o mesmo servidor. 
-no debian: 
+No debian: 
 
        root@debian:/# apt-get install apache2 lftp
 
@@ -69,7 +70,7 @@ editar a porta do apache para 8080, ou como preferir, mudar a linha Listen 80 pa
 
         root@debian:/# nano /etc/apache2/ports.conf
 
-5.Criar o Script abaixo:  
+5. Criar o script abaixo:  
 
         root@debian:/# nano /var/www/html/vai.sh
 
