@@ -112,11 +112,11 @@ Dar permisão
         total 40
         -rw-r--r-- 1 0 0 14124 Jul  6  2017 named.log
         -rw-r--r-- 1 0 0    64 Jul  6 14:20 prtg.txt
-        -rwxr-xr-x 1 0 0  1614 Jul  6 09:58 vai3.sh
+        -rwxr-xr-x 1 0 0  1614 Jul  6 09:58 vai.sh
         
         obs.: named.log é o arquivo que o script baixou do servidor de dns bind.
               prtg.txt é o arquivo formatado para o prtg gerar os canais.
-              vai3.sh é nosso script. 
+              vai.sh é nosso script. 
 
 o arquivo prtg.txt vai ficar assim:  
     
@@ -139,7 +139,6 @@ Pronto o grafico de stats está criado.
 
 
 
-Até mais..
 
 
-
+Até mais...
