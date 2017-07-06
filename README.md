@@ -116,7 +116,29 @@ Dar permisão
         obs.: named.log é o arquivo que o script baixou do servidor de dns bind.
               prtg.txt é o arquivo formatado para o prtg gerar os canais.
               vai3.sh é nosso script. 
-  
-Até  mais...
+
+o arquivo prtg.txt vai ficar assim:  
+    
+    [72432]
+    [151765]
+    [14372]
+    [1]
+    [2651]
+    [3]
+    [4200]
+    [444]
+    [8711]
+    [8]
+onde cada colchete é o dado de um canal. da seguinte ordem: A, NS, CNAME, SOA, PTR, HINFO, MX, TXT, AAAA, SRV.
+
+# Configurando o PRTG
+Para o PRTG é so criar um sensor do tipo Conteúdo HTTP e colocar a url do seu servidor (ex.: http://192.168.100.10:8080/prtg.txt) e o numero de canais que neste caso são 10. 
+
+Pronto o grafico de stats está criado. 
+
+
+
+Até mais..
+
 
 
