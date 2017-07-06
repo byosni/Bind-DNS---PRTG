@@ -87,7 +87,7 @@ colocar o script:
     rm -rf /var/www/html/prtg.txt
 
     #pega as variaveis dentro do arquivo named.log e gera o arquivo dos canais.
-    echo ; grep "Cache DB" /var/www/html/named.log -A 16 | grep "A" | awk '{print "[" $1 "]" }' | sed -n '1p' >> /var/www/html/prtg3.txt
+    echo ; grep "Cache DB" /var/www/html/named.log -A 16 | grep "A" | awk '{print "[" $1 "]" }' | sed -n '1p' >> /var/www/html/prtg.txt
     echo ; grep "Cache DB" /var/www/html/named.log -A 16 | grep "NS" | awk '{print "[" $1 "]" }' | sed -n '1p' >> /var/www/html/prtg.txt
     echo ; grep "Cache DB" /var/www/html/named.log -A 16 | grep "CNAME" | awk '{print "[" $1 "]" }' | sed -n '1p' >> /var/www/html/prtg.txt
     echo ; grep "Cache DB" /var/www/html/named.log -A 16 | grep "SOA" | awk '{print "[" $1 "]" }' | sed -n '1p' >> /var/www/html/prtg.txt
@@ -104,7 +104,7 @@ Dar permisão
 
 6. Programar no crontab para rodar o scrip vai.sh de 5 em 5 minutos. 
 
-        */1 * * * * sh /var/www/html/./vai.sh
+        */5 * * * * sh /var/www/html/./vai.sh
 
 7. No diretorio do /var/www/html deve conter os arquivos: 
 
