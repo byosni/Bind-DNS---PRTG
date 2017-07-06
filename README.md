@@ -1,18 +1,13 @@
 # Bind-DNS-PRTG
 Captura variáveis do arquivo de stats do bind e gerar arquivo de configuração para ser capturado e gerado gráfico para o PRTG.
 
-
-
 1. Editar o arquivo no servidor de DNS:
     
         root@dns:/# nano /etc/bind/named.conf.options
-
 incluir: 
 
         zone-statistics yes;
         statistics-file "/var/log/named/named.log";
-
-
 
 2. ir até /var/log/named, executar o comando:
 
@@ -63,14 +58,12 @@ verificar se o arquivo ficou assim:
 
 colocar o comando abaixo. 
         
-        #crontab lima e cria o arquivo de stats de 5 em 5 minutos.
         */5 * * * * rm -rf /var/log/named/named.log && /usr/sbin/rndc stats
-
 
 4. Instalar um servidor Debian para capturar os dados do bind. Não usar o mesmo servidor. 
 no debian: 
 
-       root@debian:/# apt-get install apache2
+       root@debian:/# apt-get install apache2 lftp
 
 editar a porta do apache para 8080, ou como preferir, mudar a linha Listen 80 para 8080 
 
@@ -108,4 +101,22 @@ Dar permisão
 
     root@debian:/# chmod +x /var/www/html/vai.sh
 
-6. Programar para rodar o script: 
+6. Programar no crontab para rodar o scrip vai.sh de 5 em 5 minutos. 
+
+        */1 * * * * sh /var/www/html/./vai.sh
+
+7. No diretorio do /var/www/html deve conter os arquivos: 
+
+        root@debian:/# ls -ln /var/www/html
+        total 40
+        -rw-r--r-- 1 0 0 14124 Jul  6  2017 named.log
+        -rw-r--r-- 1 0 0    64 Jul  6 14:20 prtg.txt
+        -rwxr-xr-x 1 0 0  1614 Jul  6 09:58 vai3.sh
+        
+        obs.: named.log é o arquivo que o script baixou do servidor de dns bind.
+              prtg.txt é o arquivo formatado para o prtg gerar os canais.
+              vai3.sh é nosso script. 
+  
+Até  mais...
+
+
