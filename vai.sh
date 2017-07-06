@@ -8,7 +8,7 @@ lftp -e "mirror /var/log/named /var/www/html;quit" -p 2222 -u login,senha sftp:/
 #limpa o arquivo /var/www/html/prtg.txt
 rm -rf /var/www/html/prtg.txt
 
-#pega o nome dos arquivos e gera os canais
+#pega as váriaveis e gera os canais
 echo ; grep "Cache DB" /var/www/html/named.log -A 16 | grep "A" | awk '{print "[" $1 "]" }' | sed -n '1p' >> /var/www/html/prtg.txt
 echo ; grep "Cache DB" /var/www/html/named.log -A 16 | grep "NS" | awk '{print "[" $1 "]" }' | sed -n '1p' >> /var/www/html/prtg.txt
 echo ; grep "Cache DB" /var/www/html/named.log -A 16 | grep "CNAME" | awk '{print "[" $1 "]" }' | sed -n '1p' >> /var/www/html/prtg.txt
